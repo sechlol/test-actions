@@ -1,0 +1,29 @@
+[project]
+name = "app1"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Christian Cardin",email = "christian.cardin@iceye.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+
+[tool.poetry]
+packages = [{include = "app1", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+fastapi = ">=0.125.0,<0.126.0"
+uvicorn = {extras = ["standard"], version = "^0.32.0"}
+common-lib = {path = "../../packages/common_lib", develop = true}
+
+[project.scripts]
+app1 = "app1.main:main"
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "isort (>=7.0.0,<8.0.0)",
+    "ruff (>=0.14.10,<0.15.0)"
+]
